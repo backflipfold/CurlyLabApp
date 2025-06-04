@@ -22,21 +22,24 @@
 Целевая аудитория — кудрявые люди. Уход за кудрявыми волосами требует особых усилий. Многие из людей, имеющих этот тип волос, переходя на **кудрявый метод**, сталкиваются с непониманием, с чего начать, какие методы и технологии использовать, чтобы укротить непослушные волосы. Приложение содержит всю необходимую информацию для легкого старта, а также предоставляет возможность делиться своим опытом и перенимать что-то новое у других. 
 
 # Выработка требований
-![image](https://github.com/user-attachments/assets/ecd5254b-f764-49a4-89d0-f4ec68d55635)
-![image](https://github.com/user-attachments/assets/5869b740-bd81-493e-b98b-759d50f5bb2f)
-![image](https://github.com/user-attachments/assets/faf8b39a-c904-4bf6-ae58-f546da4c2769)
-
+![image](https://github.com/user-attachments/assets/2586cd3d-8f03-4fef-bf99-c658f87665f6)
+![image](https://github.com/user-attachments/assets/bd9462df-0a71-48b6-bf0f-146fd6afc519)
+![image](https://github.com/user-attachments/assets/312e94a4-ee05-4cb9-a898-016f425fe4d2)
 
 # Разработĸа архитеĸтуры и детальное проеĸтирование
 ## Характер нагрузки на сервис
 ## C4 Model
 ### Context 
-![image](https://github.com/user-attachments/assets/09ef9760-8a3e-4093-b1f8-02f68190459f)
+![image](https://github.com/user-attachments/assets/7acded04-2823-4006-8345-bbce17d9796a)
 ### Container 
-![image](https://github.com/user-attachments/assets/54665a94-9679-4dff-a22a-2f80391bd227)
+![image](https://github.com/user-attachments/assets/2e950f17-73da-4e79-ad69-e5677cc40147)
 ## Контракты API
 ## Нефункциональные требования
 ## Схема базы данных и обоснование
+![image](https://github.com/user-attachments/assets/ba2fd1b2-8b08-4dff-b1df-338c068c652b)
+![image](https://github.com/user-attachments/assets/aac54a65-2cef-49cc-966e-cd02076299cd)
+![image](https://github.com/user-attachments/assets/1318caaf-d5b3-43e2-ae05-8af069b5235e)
+
 ## Схема масштабирования сервиса при росте нагрузĸи в 10 раз
 
 # Кодирование и отладĸа
