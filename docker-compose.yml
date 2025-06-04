@@ -1,0 +1,141 @@
+version: '3.8'
+
+services:
+  # ---------- DATABASES ----------
+  postgres_users:
+    image: postgres:15
+    container_name: db_users
+    environment:
+      POSTGRES_DB: curly_users
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_users_data:/var/lib/postgresql/data
+    networks:
+      - curlylab
+
+  postgres_product:
+    image: postgres:15
+    container_name: db_product
+    environment:
+      POSTGRES_DB: curly_products
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_product_data:/var/lib/postgresql/data
+    networks:
+      - curlylab
+
+  postgres_blog:
+    image: postgres:15
+    container_name: db_blog
+    environment:
+      POSTGRES_DB: curly_blog
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_blog_data:/var/lib/postgresql/data
+    networks:
+      - curlylab
+
+  # ---------- MICROSERVICES ----------
+  blog-service:
+    build: ./blogSpring
+    depends_on:
+      - postgres_blog
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db_blog:5432/curly_blog
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8082:8082"
+    networks:
+      - curlylab
+
+  product-service:
+    build: ./ProductBackend
+    depends_on:
+      - postgres_product
+    environment:
+      DB_HOST: db_product
+      DB_PORT: 5432
+      DB_NAME: curly_products
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    ports:
+      - "8083:8083"
+    networks:
+      - curlylab
+
+  user-service:
+    build: ./CurlyLab_users
+    depends_on:
+      - postgres_users
+    environment:
+      DB_URL: jdbc:postgresql://db_users:5432/curly_users
+      DB_PASS: postgres
+      JWT_SECRET: 3ccc6d6cd63aa04460a1b7341892a848ce3199eccaf70a41aa4d7cd83fcb1f1c
+    ports:
+      - "8081:8081"
+    networks:
+      - curlylab
+
+  composition-service:
+    build: ./CheckConsistsServicePython
+    ports:
+      - "8000:8000"
+    networks:
+      - curlylab
+
+  gateway:
+    build: ./CurlyLab_gateway
+    depends_on:
+      - redis
+      - user-service
+      - product-service
+      - blog-service
+      - composition-service
+    ports:
+      - "8080:8080"
+    networks:
+      - curlylab
+
+  redis:
+    image: redis:7
+    container_name: redis
+    networks:
+      - curlylab
+
+  # Сервис для запуска тестов бэкенда
+  test-runner:
+    image: gradle:7.6-jdk17
+    volumes:
+      - ./blogSpring:/app/blog
+      - ./CurlyLab_users:/app/users
+      - gradle-cache:/home/gradle/.gradle
+    working_dir: /app
+    networks:
+      - curlylab
+    command: >
+      sh -c "cd blog && ./gradlew test &&
+             cd ../users && ./gradlew test"
+
+  android-builder:
+    image: us-docker.pkg.dev/android-emulator-268719/images/r-google-x64:30.0.23
+    volumes:
+      - ./CurlyLab:/app
+    working_dir: /app
+    command: ./gradlew assembleDebug
+    environment:
+      - ANDROID_HOME=/opt/android/sdk
+    networks:
+      - curlylab
+
+volumes:
+  db_users_data:
+  db_product_data:
+  db_blog_data:
+  gradle-cache:
+
+networks:
+  curlylab:

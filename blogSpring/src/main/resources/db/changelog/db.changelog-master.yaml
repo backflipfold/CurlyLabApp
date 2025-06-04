@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: dombrv
+      changes:
+        - createTable:
+            tableName: blog_records
+            columns:
+              - column:
+                  name: record_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tags
+                  type: JSONB
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    defaultValueComputed: CURRENT_TIMESTAMP
+  - changeSet:
+      id: 2
+      author: dombrv
+      changes:
+        - createTable:
+            tableName: blog_subscribers
+            columns:
+              - column:
+                  name: blog_subscribers_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: author_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: subscriber_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author:  dombrv
+      changes:
+        - createTable:
+            tableName: user_hair_types
+            columns:
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: is_colored
+                  type: boolean
+                  constraints:
+                    nullable: true
+              - column:
+                  name: porosity
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: thickness
+                  type: varchar(255)
+                  constraints:
+                    nullable: true

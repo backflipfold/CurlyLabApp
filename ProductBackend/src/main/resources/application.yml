@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: PRODUCT-SERVICE
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: db,diskSpace
+  endpoints:
+    web:
+      exposure:
+        include: health,readiness
+
+logging:
+ level:
+   root: INFO
+   org.springframework.web: DEBUG

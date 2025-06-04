@@ -1,0 +1,27 @@
+ktor:
+  application:
+    modules:
+      - aps.backflip.curlylab.ApplicationKt.module
+server:
+  port: 8081
+
+spring:
+  application:
+    name: USER-SERVICE
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: db,diskSpace
+  endpoints:
+    web:
+      exposure:
+        include: health,readiness
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
