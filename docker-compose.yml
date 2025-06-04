@@ -106,7 +106,6 @@ services:
     networks:
       - curlylab
 
-  # Сервис для запуска тестов бэкенда
   test-runner:
     image: gradle:7.6-jdk17
     volumes:

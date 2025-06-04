@@ -34,11 +34,12 @@
 ### Container 
 ![image](https://github.com/user-attachments/assets/2e950f17-73da-4e79-ad69-e5677cc40147)
 ## Контракты API
-## Нефункциональные требования
 ## Схема базы данных и обоснование
-![image](https://github.com/user-attachments/assets/ba2fd1b2-8b08-4dff-b1df-338c068c652b)
-![image](https://github.com/user-attachments/assets/aac54a65-2cef-49cc-966e-cd02076299cd)
-![image](https://github.com/user-attachments/assets/1318caaf-d5b3-43e2-ae05-8af069b5235e)
+<div id="db" align="center">
+  <img src="https://github.com/user-attachments/assets/ba2fd1b2-8b08-4dff-b1df-338c068c652b" width="400" height="400">
+  <img src="https://github.com/user-attachments/assets/aac54a65-2cef-49cc-966e-cd02076299cd" width="400" height="400">
+  <img src="https://github.com/user-attachments/assets/1318caaf-d5b3-43e2-ae05-8af069b5235e" width="600" height="400">
+</div>
 
 ## Схема масштабирования сервиса при росте нагрузĸи в 10 раз
 
@@ -49,3 +50,11 @@
 # Интеграционное тестирование
 
 # Сборĸа
+* Сборка Android APK
+```
+docker-compose run --rm android-builder
+```
+* Запуск Unit-тестов
+```
+docker-compose run --rm test-runner
+```
