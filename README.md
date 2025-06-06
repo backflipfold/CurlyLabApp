@@ -34,6 +34,243 @@
 ### Container 
 ![image](https://github.com/user-attachments/assets/2e950f17-73da-4e79-ad69-e5677cc40147)
 ## Контракты API
+## Authentication
+
+### Register
+
+- **URL**: `/auth/register`
+
+- **Method**: `POST`
+
+### Login
+
+- **URL**: `/auth/login`
+
+- **Method**: `POST`
+
+### Refresh Tokens
+
+- **URL**: `/auth/refresh`
+
+- **Method**: `POST`
+
+### Logout
+
+- **URL**: `/auth/logout`
+
+- **Method**: `POST`
+
+## Users
+
+### Create User
+
+- **URL**: `/users`
+
+- **Method**: `POST`
+
+### Get All Users
+
+- **URL**: `/users`
+
+- **Method**: `GET`
+
+### Get User by ID
+
+- **URL**: `/users/{id}`
+
+- **Method**: `GET`
+
+### Update User
+
+- **URL**: `/users/{id}`
+
+- **Method**: `PUT`
+
+### Upload User Image
+
+- **URL**: `/users/{id}/uploadImage`
+
+- **Method**: `POST`
+
+- **Content-Type**: `multipart/form-data`
+
+- **Body**: `image` (file part)
+
+### Delete User
+
+- **URL**: `/users/{id}`
+
+- **Method**: `DELETE`
+
+## Blog Records
+
+### Get Posts by Subscribed Users
+
+- **URL**: `/blog_records/subscriptions/{id}`
+
+- **Method**: `GET`
+
+### Get Recommended Posts for User
+
+- **URL**: `/blog_records/recommended/{id}`
+
+- **Method**: `GET`
+
+### Get Recommended Posts
+
+- **URL**: `/blog_records/recommended`
+
+- **Method**: `GET`
+
+### Search Posts by Keyword
+
+- **URL**: `/blog_records/find/{word}`
+
+- **Method**: `GET`
+
+### Get Posts by User
+
+- **URL**: `/blog_records/my/{id}`
+
+- **Method**: `GET`
+
+### Edit Post
+
+- **URL**: `/blog_records/{id}`
+
+- **Method**: `PUT`
+
+### Delete Post
+
+- **URL**: `/blog_records/{id}`
+
+- **Method**: `DELETE`
+
+### Add Post
+
+- **URL**: `/blog_records`
+
+- **Method**: `POST`
+
+## Blog Subscribers
+
+### Get Subscription Count for User
+
+- **URL**: `/blog_subscribers/subscriptions/{id}`
+
+- **Method**: `GET`
+
+### Get Subscriber Count for User
+
+- **URL**: `/blog_subscribers/subscribers/{id}`
+
+- **Method**: `GET`
+
+### Subscribe
+
+- **URL**: `/blog_subscribers`
+
+- **Method**: `POST`
+
+### Unsubscribe
+
+- **URL**: `/blog_subscribers/{id}`
+
+- **Method**: `DELETE`
+
+### Get Subscription ID
+
+- **URL**: `/blog_subscribers/get`
+
+- **Method**: `POST`
+
+## Products
+
+### Get All Products
+
+- **URL**: `/products`
+
+- **Method**: `GET`
+
+### Get Product by ID
+
+- **URL**: `/products/{productId}`
+
+- **Method**: `GET`
+
+### Get User Favorites
+
+- **URL**: `/products/favorites/{userId}`
+
+- **Method**: `GET`
+
+### Check if Product is Favorite
+
+- **URL**: `/products/{productId}/is-favorite/{userId}`
+
+- **Method**: `GET`
+
+### Add to Favorites
+
+- **URL**: `/products/favorites`
+
+- **Method**: `POST`
+
+### Remove from Favorites
+
+- **URL**: `/products/favorites`
+
+- **Method**: `DELETE`
+
+### Get Product Reviews
+
+- **URL**: `/products/{id}/reviews`
+
+- **Method**: `GET`
+
+### Add Review
+
+- **URL**: `/products/rate`
+
+- **Method**: `POST`
+
+### Update Review
+
+- **URL**: `/products/{productId}/reviews/{userId}/update`
+
+- **Method**: `POST`
+
+### Delete Review
+
+- **URL**: `/products/{productId}/reviews/{userId}`
+
+- **Method**: `DELETE`
+
+## Hair Types
+
+### Get All Hair Types
+
+- **URL**: `/hairtypes`
+
+- **Method**: `GET`
+
+### Get Hair Type by ID
+
+- **URL**: `/hairtypes/{id}`
+
+- **Method**: `GET`
+
+### Update Hair Type for User
+
+- **URL**: `/hairtypes/{userId}`
+
+- **Method**: `PUT`
+
+### Delete Hair Type for User
+
+- **URL**: `/hairtypes/{userId}`
+
+- **Method**: `DELETE`
 ## Схема базы данных и обоснование
 <div id="db" align="center">
   <img src="https://github.com/user-attachments/assets/ba2fd1b2-8b08-4dff-b1df-338c068c652b" width="400" height="400">
@@ -44,7 +281,12 @@
 ## Схема масштабирования сервиса при росте нагрузĸи в 10 раз
 
 # Кодирование и отладĸа
-
+* Реализованы регистрация и авторизация с валидацией данных
+* Используется шифрование чувствительных данных
+* Интеграция с внешним API для хранения фотографий
+* Git-стратегия с использованием feature-веток 
+* Каждый участник команды сделал коммиты в репозиторий
+  
 # Unit тестирование
 
 # Интеграционное тестирование
@@ -58,3 +300,6 @@ docker-compose run --rm android-builder
 ```
 docker-compose run --rm test-runner
 ```
+
+
+
