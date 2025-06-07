@@ -1,13 +1,14 @@
-FROM thyrlian/android-sdk:latest AS build
+FROM thyrlian/android-sdk:latest
+
+ENV ANDROID_HOME=/opt/android-sdk
+ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH="$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
 COPY . .
 
-RUN yes | sdkmanager --licenses && \
-    ./gradlew assembleDebug
+RUN echo "sdk.dir=/opt/android-sdk" > local.properties
 
-FROM budtmo/docker-android-x86-11.0
-
-COPY --from=build /app/app/build/outputs/apk/debug/app-debug.apk /apk/CurlyLab.apk
-
-CMD ["wait-for-emulator", "sh", "-c", "adb install /apk/CurlyLab.apk && am start -n your.package.name/.MainActivity"]
+RUN yes | sdkmanager --licenses && ./gradlew assembleDebug

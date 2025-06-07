@@ -410,9 +410,9 @@
 * Проверка, что на экране профиля отображается имя пользователя.
 
 # Сборĸа
-* Сборка Android APK
+* Сборка Android APK (APK появится в папке output_apk)
 ```
-docker-compose run --rm android-builder
+docker compose run --build --rm android-builder
 ```
 * Запуск Unit-тестов
 ```
