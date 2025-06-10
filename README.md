@@ -33,9 +33,9 @@
 * Объемы дисковой системы: ~120 ГБ для хранения данных пользователей, продуктов, отзывов, постов.
 ## C4 Model
 ### Context 
-![image](https://github.com/user-attachments/assets/7acded04-2823-4006-8345-bbce17d9796a)
+![image](https://github.com/user-attachments/assets/b5deff17-3a63-4aba-a21e-afbe0da2297c)
 ### Container 
-![image](https://github.com/user-attachments/assets/2e950f17-73da-4e79-ad69-e5677cc40147)
+![image](https://github.com/user-attachments/assets/549fb08c-4e95-41d5-8883-7796abc392b8)
 ## Контракты API
 ## Authentication
 
